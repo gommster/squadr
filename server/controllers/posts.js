@@ -22,7 +22,7 @@ module.exports = {
       } else if (mine && search) {
         if (oldest) {
           db.search.search_all_oldest_first([`%${search.toLowerCase()}%`])
-            .then(posts => res.status(200).send(posts))
+            .then(posts => res.status(200).send(posts)) 
         } else {
           db.search.search_all_posts([`%${search.toLowerCase()}%`])
             .then(posts => res.status(200).send(posts))
@@ -37,8 +37,15 @@ module.exports = {
         }
       }
     },
-    createPost: (req, res) => {
-      //code here
+    createPost: async (req, res) => {
+      const {title, img, content} = req.body;
+      const {id} = req.session.user;
+      const date = new Date;
+      if(id) {
+        const post = await req.app.get('db').post.create_post([id, title, img, content, date]);
+        return res.status(200).send(post);
+      }
+      return res.status(403).send('FORBIDDEN!');
     },
     readPost: (req, res) => {
       req.app.get('db').post.read_post(req.params.id)
