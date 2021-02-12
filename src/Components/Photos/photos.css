@@ -1,0 +1,63 @@
+.inputBox {
+  width: 100%;
+  height: 80;
+  margin-top: 25;
+  border: 5px black dotted;
+  border-radius: 5;
+  display: 'inline-block';
+  font-size: 17;
+}
+
+.photoSelector {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.miniPhoto{
+  width: 18%;
+  height: auto;
+}
+
+.miniPhoto img {
+  width: 100%;
+  height: auto;
+}
+
+.displayedPhoto {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  margin-bottom: 15px;
+  justify-content: center;
+}
+
+.displayedPhoto img{
+  width: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 500px) {
+  .miniPhoto{
+    width: 18%;
+    height: auto;
+  }
+  
+  .miniPhoto img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .displayedPhoto {
+    width: 100%;
+    height: 155px;
+    display: flex;
+    margin-bottom: 15px;
+    justify-content: center;
+  }
+  
+  .displayPhoto img{
+    object-fit: contain;
+  }
+}

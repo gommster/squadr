@@ -1,0 +1,1 @@
+select count(1) from matches where id1=$1 and id2=$2;

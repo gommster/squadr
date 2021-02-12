@@ -1,0 +1,40 @@
+.profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 0 0 0 70px;
+}
+
+.profile > .photos {
+  width: 40%;
+}
+
+.information {
+  width: 40%
+}
+
+.description-box {
+  width: 100%;
+}
+
+.description-box textarea{
+  width: 98%;
+  height: 250px;
+  font-family: inherit;
+  font-size: 20px;
+}
+
+@media (max-width: 600px) {
+  .profileDIV {
+    margin-top: 70px;
+  }
+
+  .profile{
+    margin: 0;
+    width: 90%;
+    flex-direction: column;
+  }
+  .profile > .photos {
+    width: 100%
+  }
+}

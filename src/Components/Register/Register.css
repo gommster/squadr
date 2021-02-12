@@ -1,0 +1,58 @@
+.reg {
+  display: flex;
+  flex-direction: row;
+}
+
+.reg > .photos {
+  width: 45vw;
+}
+
+.information {
+  width: 45vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.auth-input-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55%;
+    background-color: #8E9DCC;
+    margin: 0;
+  }
+
+@media (max-width: 600px) {
+  .reg {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .photos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .photos h1{
+    font-size: 23.4px;
+    text-align: center;
+  }
+
+  .information {
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .auth-input-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    padding: 0 10px;
+    background-color: #8E9DCC;
+    margin: 0;
+  }
+}

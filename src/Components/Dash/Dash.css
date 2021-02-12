@@ -3,17 +3,18 @@
     margin: 0 auto;
 }
 
-.dash-filter {
+.tags-filter {
   display: flex;
+  flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin: 10px 0;
 }
 
 .dash-search-box {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-evenly;
   width: 55%;
 }
 
@@ -31,11 +32,86 @@
 
 .dash-post-box{
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-evenly;
   align-items: center;
   margin: 10px 0;
 }
 
 .dash-post-box > h3 {
   font-size: 30px;
+}
+
+.photos {
+  width: 48%;
+  margin: 20px;
+}
+
+.displayPhoto {
+  width: 90%;
+  height: 50%;
+}
+
+.displayPhoto img{
+  object-fit: contain;
+}
+
+.profile-info {
+  width: 48%
+}
+
+@media (max-width: 500px) {
+  .dash {
+    width: 90%;
+    margin: 70px auto 0;
+  }
+
+  .tags-filter {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: column wrap;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 20px;
+  }
+
+  .dash-search-box {
+    display: flex;
+    justify-content: space-evenly;
+    width: 55%;
+  }
+
+  .dash-search-bar {
+    height: 25px;
+    width: 65%;
+  }
+
+  .dash-check-box {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .dash-post-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 10px 0;
+    padding: 20px;
+  }
+
+  .dash-post-box > h3 {
+    font-size: 30px;
+  }
+
+  .photos {
+    width: 90%;
+  }
+
+  .profile-info {
+    width: 48%
+  }
 }

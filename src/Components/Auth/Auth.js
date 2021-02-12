@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import logo from './../../assets/helo_logo.png';
+import logo from './../../assets/group_add-white-48dp.svg'
 import './Auth.css';
 import {connect} from 'react-redux';
 import {updateUser} from '../../redux/reducer';
+import {Link} from 'react-router-dom';
 
 class Auth extends Component {
   constructor(props) {
@@ -14,7 +15,6 @@ class Auth extends Component {
       errorMsg: ''
     }
     this.login = this.login.bind(this);
-    this.register = this.register.bind(this);
   }
 
   handleChange(prop, val) {
@@ -23,28 +23,21 @@ class Auth extends Component {
     })
   }
 
-  login() {
-    axios.post('/api/auth/login', this.state)
+  async login() {
+    console.log('STATE: ', this.props)
+
+    await axios.post('/api/auth/login', this.state)
       .then(res => {
+        console.log('LOGIN RES DATA: ', res.data)
+        this.props.updateUser({id: res.data.id, username: res.data.username, profile_pic: res.data.profile_pic});
         this.props.history.push('/dash')
-        updateUser({username: res.username, profile_pic: res.profile_pic});
+        console.log('Response: ',res);
       })
       .catch(err => {
         console.log(err)
         this.setState({errorMsg: 'Incorrect username or password!'})
       })
-  }
-
-  register() {
-    axios.post('/api/auth/register', this.state)
-      .then(res => {
-        this.props.history.push('/dash')
-        updateUser({username: res.data.username, profile_pic: res.data.profile_pic});
-      })
-      .catch(err => {
-        console.log(err)
-        this.setState({errorMsg: 'Username taken!'})
-      })
+      console.log(this.state)
   }
 
   closeErrorMessage = () => {
@@ -59,26 +52,24 @@ class Auth extends Component {
     return (
       <div className='auth'>
         <div className='auth-container'>
-          <img src={logo} alt='logo' />
-          <h1 className='auth-title'>Helo</h1>
+          <img src={logo} alt='logo' id='logo' />
+          <h1 className='auth-title'>SQUADR</h1>
           {this.state.errorMsg && <h3 className='auth-error-msg'>{this.state.errorMsg} <span onClick={this.closeErrorMessage}>X</span></h3>}
           <div className='auth-input-box'>
-            <p>Username:</p>
+            <p>USERNAME:</p>
             <input value={this.state.username} onChange={e => this.handleChange('username', e.target.value)} />
           </div>
           <div className='auth-input-box'>
-            <p>Password:</p>
+            <p>PASSWORD:</p>
             <input value={this.state.password} type='password' onChange={e => this.handleChange('password', e.target.value)} />
           </div>
           <div className='auth-button-container'>
-            <button className='dark-button' onClick={this.login}> Login </button>
-            <button className='dark-button' onClick={this.register}> Register </button>
+            <button className='dark-button' onClick={this.login}> LOGIN </button>
+            <Link to='/reg'><button className='dark-button'> REGISTER </button></Link>
           </div>
         </div>
       </div>
     );
   }
 }
-connect(null, {updateUser: updateUser})
-
-export default Auth;
+export default connect(null, {updateUser: updateUser})(Auth)

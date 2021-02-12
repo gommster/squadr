@@ -1,0 +1,1 @@
+insert into matches (id1, id2, isMatched) values ($1, $2, false);
